@@ -1,20 +1,34 @@
 "use client"
-import axios from "axios"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-async function getJokes() {
-    try {
-      const response = await axios.get('..pages/api/JokeApi');
-      console.log(response);
-    } catch (error) {
-      console.error(error);
+function Jokes() {
+  const [jokes, setJokes] = useState([]);
+
+  useEffect(() => {
+    async function fetchJokes() {
+      try {
+        const response = await axios.get('/api/jokeapi');
+        console.log(response.data);
+        setJokes(response.data);
+      } catch (error) {
+        console.error(error + " error");
+      }
     }
-  }
 
+    fetchJokes();
+  }, []);
 
-export default function Jokes(){
-    return(
-       <div>
-        <button onClick={getJokes}>clique</button>
-       </div>
-    )
+  return (
+    <div>
+      <h1>Piadas</h1>
+      <ul>
+        {jokes.map((joke, index) => (
+          <li key={index}>{joke}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+export default Jokes;

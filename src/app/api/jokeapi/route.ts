@@ -34,8 +34,8 @@ const jokes = [
 ];
 
 
-export default function JokeApi(req : NextApiRequest, res: NextApiResponse){
-    if (req.method === "GET") {
+export default function Jokeapi(req : NextApiRequest, res: NextApiResponse){
+    if (req.method === "GET"){
         res.status(200).json(jokes)
     }
 }
