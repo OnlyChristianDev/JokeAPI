@@ -1,5 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-
 const jokes = [
     "Por que os químicos são ótimos em resolver problemas? Porque eles têm todas as soluções!",
     "Por que o desenvolvedor faliu? Porque ele usou todo o seu cache.",
@@ -33,9 +31,11 @@ const jokes = [
     "Você ouviu sobre todos os significados ocultos do Rei Leão? Sim, está cheio de simbalismo."
 ];
 
-
-export default function Jokeapi(req : NextApiRequest, res: NextApiResponse){
-    if (req.method === "GET"){
-        res.status(200).json(jokes)
+export async function GET() {
+    return new Response(JSON.stringify(jokes), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     }
-}
