@@ -12,7 +12,7 @@ const jokes = [
     "Como chamar um cão mágico? Um Labracadabrador.",
     "Por que os pássaros voam para climas mais quentes no inverno? É muito mais fácil do que caminhar!",
     "Seja como um próton. Sempre seja positivo.",
-    "Que tipo de carro o Yoda dirige? Toyoda.",
+    "Que tipo de carro o Yoda dirige? Toyoda.", 
     "O que o zero diz a um oito? Cinto legal.",
     "Quantos profissionais de marketing são necessários para arrumar uma lâmpada? Nenhum, eles já automatizaram o processo.",
     "Quer ouvir uma piada sobre o potássio? K.",
@@ -31,8 +31,23 @@ const jokes = [
     "Você ouviu sobre todos os significados ocultos do Rei Leão? Sim, está cheio de simbalismo."
 ];
 
+const aleatoryNumberFunction = (min : number, max : number) => {
+  return Math.floor(Math.random() * (max - min - 1) - min)
+}
+
+const setJokes = () => {
+  if (jokes.length > 0){
+    const aleatoryNumber = aleatoryNumberFunction(0, jokes.length - 1)
+    const joke = jokes[aleatoryNumber]
+    jokes.splice(aleatoryNumber, 1)
+    return joke
+  } else {
+    window.alert("ARRAY VAZIO")
+  }
+}
 export async function GET() {
-    return new Response(JSON.stringify(jokes), {
+  const joke = setJokes()
+    return new Response(JSON.stringify(joke), {
         status: 200,
         headers: {
           'Content-Type': 'application/json',

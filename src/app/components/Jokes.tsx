@@ -31,11 +31,10 @@ export default function Jokes() {
   return (
     <div>
       <h1>Piadas</h1>
-      <ul>
-        {jokes.map((joke, index) => (
-          <li key={index}>{joke}</li>
-        ))}
-      </ul>
+      <button >clique</button>
+      <p>
+        {jokes}
+      </p>
     </div>
   );
 }
