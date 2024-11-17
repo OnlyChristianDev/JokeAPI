@@ -44,9 +44,8 @@ export default function Jokes() {
   }
 
   return (
-    <div>
-      <h1>Piadas</h1>
-      <button onClick={jokesfunction}>clique</button>
+    <div className='w-full min-h-screen flex items-center justify-center flex-col'>
+      <button className='bg-pink-800 w-40 p-2 rounded-lg font-semibold' onClick={jokesfunction}>Mais uma</button>
       <p>
         {currentJoke}
       </p>
