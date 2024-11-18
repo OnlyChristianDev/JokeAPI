@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Card from './Card';
 
 export default function Jokes() {
   const [jokes, setJokes] = useState<string[]>([]); 
@@ -45,10 +46,8 @@ export default function Jokes() {
 
   return (
     <div className='w-full min-h-screen flex items-center justify-center flex-col'>
+      <Card joke={currentJoke} />
       <button className='bg-pink-800 w-40 p-2 rounded-lg font-semibold' onClick={jokesfunction}>Mais uma</button>
-      <p>
-        {currentJoke}
-      </p>
     </div>
   );
 }
