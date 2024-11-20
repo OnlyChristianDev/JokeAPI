@@ -6,6 +6,7 @@ export default function Jokes() {
   const [jokes, setJokes] = useState<string[]>([]); 
   const [loading, setLoading] = useState<boolean>(true); 
   const [currentJoke, SetCurrentJoke] = useState(""); 
+  const [currentAnswer, SetCurrentAnswer] = useState(""); 
 
   useEffect(() => {
     async function fetchJokes() {
@@ -37,7 +38,9 @@ export default function Jokes() {
         return <p>Carregando piadas...</p>;
       }
       const aleatoryNumber = aleatoryNumberFunction(0, jokes.length - 1)
-      SetCurrentJoke(jokes[aleatoryNumber])
+      const obj = jokes[aleatoryNumber]
+      SetCurrentJoke(obj.joke)
+      SetCurrentAnswer(obj.answer)
       jokes.splice(aleatoryNumber, 1)
     } else {
       window.alert("ARRAY VAZIO")
@@ -46,7 +49,7 @@ export default function Jokes() {
 
   return (
     <div className='w-full min-h-screen flex items-center justify-center flex-col'>
-      <Card joke={currentJoke} />
+      <Card joke={currentJoke} answer={currentAnswer} />
       <button className='bg-pink-800 w-40 p-2 rounded-lg font-semibold' onClick={jokesfunction}>Mais uma</button>
     </div>
   );
