@@ -5,10 +5,11 @@ import BlueCard from "../../../public/BlueCaard.png";
 import RedCard from "../../../public/RedCard.png";
 interface JokeProps {
   joke: string;
-  answer : string
+  answer : string;
+  onNextJoke: () => void
 }
 
-export default function Card({ joke, answer }: JokeProps) {
+export default function Card({ joke, answer, onNextJoke  }: JokeProps) {
   const [flippedRedCard, setFlippedRedCard] = useState(false);
   const [flippedBlueCard, setFlippedBlueCard] = useState(false);
   const [animation, setAnimation] = useState(false)
@@ -21,6 +22,18 @@ export default function Card({ joke, answer }: JokeProps) {
     } else {
       setAnimation(true)
     }    
+  }
+
+  const flippedRedCardFunction = () => {
+    if (flippedBlueCard){
+      setFlippedBlueCard(false)
+      setFlippedRedCard(false)
+    } else {
+      setFlippedBlueCard(true)
+      onNextJoke()
+    }
+
+    onNextJoke()
   }
 
   useEffect(()=> {
@@ -41,7 +54,7 @@ export default function Card({ joke, answer }: JokeProps) {
           x: animation ? [0, 10, -10, 10, -10, 0] : 0, 
         }}
         transition={{ duration: 0.6 }}
-        onClick={() => setFlippedBlueCard(!flippedBlueCard)}
+        onClick={flippedRedCardFunction}
       >
         {flippedBlueCard ?  <p className='font-semibold scale-x-[-1] text-center text-2xl'>
         {joke}

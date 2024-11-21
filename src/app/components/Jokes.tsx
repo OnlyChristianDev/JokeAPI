@@ -49,8 +49,7 @@ export default function Jokes() {
 
   return (
     <div className='w-full min-h-screen flex items-center justify-center flex-col'>
-      <Card joke={currentJoke} answer={currentAnswer} />
-      <button className='bg-pink-800 w-40 p-2 rounded-lg font-semibold' onClick={jokesfunction}>Mais uma</button>
+      <Card joke={currentJoke} answer={currentAnswer} onNextJoke={jokesfunction}  />
     </div>
   );
 }
