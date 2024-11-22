@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     margin: 0; 
     height: 100vh; 
-    background: linear-gradient(to right, #222222, #1d1c1c);
+    background: linear-gradient(to bottom right, #ffa500, #ffeb3b);
     color: white;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
