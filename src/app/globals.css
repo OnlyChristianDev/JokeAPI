@@ -6,7 +6,7 @@
 body {
     margin: 0; 
     height: 100vh; 
-    background: linear-gradient(to bottom right, #ffa500, #ffeb3b);
+    background: linear-gradient(to bottom right, #171717, #201f1f);
     color: white;
     background-blend-mode: overlay;
     background-size: cover;

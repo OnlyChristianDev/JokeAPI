@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import BlueCard from "../../../public/BlueCaard.png";
+import BlueCard from "../../../public/BlueCard.png";
 import RedCard from "../../../public/RedCard.png";
 import Aviso from './Aviso';
+import { AnimatePresence } from "framer-motion";
+
 interface JokeProps {
   joke: string;
   answer : string;
@@ -45,7 +47,7 @@ export default function Card({ joke, answer, onNextJoke  }: JokeProps) {
     <div className='flex flex-col items-center justify-center'>
       <div className='flex gap-10'>
         <motion.div
-          className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${flippedBlueCard ? 'bg-[#370A77] p-10' : ''}`} 
+          className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${flippedBlueCard ? 'bg-[#9A6AF9] p-10' : ''}`} 
           initial={{ rotateY: 0 }}
           animate={{
             rotateY: flippedBlueCard ? 180 : 0,
@@ -80,7 +82,9 @@ export default function Card({ joke, answer, onNextJoke  }: JokeProps) {
           )}
         </motion.div>
       </div>
+      <AnimatePresence>
       {animation == true ? (<Aviso />) : ""}
+      </AnimatePresence>
     </div>
   );
 }
