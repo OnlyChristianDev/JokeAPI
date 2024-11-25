@@ -5,14 +5,16 @@ import BlueCard from "../../../public/BlueCard.png";
 import RedCard from "../../../public/RedCard.png";
 import Aviso from './Aviso';
 import { AnimatePresence } from "framer-motion";
+import ArrayVazio from "../components/ArrayVazio"
 
 interface JokeProps {
   joke: string;
   answer : string;
   onNextJoke: () => void
+  animationArray : boolean
 }
 
-export default function Card({ joke, answer, onNextJoke  }: JokeProps) {
+export default function Card({ joke, answer, onNextJoke, animationArray  }: JokeProps) {
   const [flippedRedCard, setFlippedRedCard] = useState(false);
   const [flippedBlueCard, setFlippedBlueCard] = useState(false);
   const [animation, setAnimation] = useState(false)
@@ -83,7 +85,8 @@ export default function Card({ joke, answer, onNextJoke  }: JokeProps) {
         </motion.div>
       </div>
       <AnimatePresence>
-      {animation == true ? (<Aviso />) : ""}
+        {animationArray == true ? <ArrayVazio /> : ""}
+        {animation == true ? (<Aviso />) : ""}
       </AnimatePresence>
     </div>
   );

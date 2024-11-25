@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 export default function Aviso() {
     return (
         <motion.div
-            className="bg-white h-12 p-5 absolute bottom-24 rounded-xl flex items-center justify-center"
-            initial={{ opacity: 0, y: 50 }} 
-            animate={{ opacity: 1, y: 0 }}  
-            exit={{ opacity: 0, y: 50 }}    
-            transition={{ duration: 0.5 }} 
+            className="fixed bottom-8 flex items-center justify-center h-14 p-6 rounded-xl bg-white"
+            initial={{ y: "100%" }} 
+            animate={{ y: 0 }} 
+            exit={{ y: "100%" }} 
+            transition={{ duration: 0.5 }}
         >
             <h1 className="text-black text-center text-md font-semibold">
                 Ei, descubra a piada antes! Vire a carta azul primeiro.
