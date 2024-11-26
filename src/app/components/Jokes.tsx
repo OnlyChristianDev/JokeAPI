@@ -47,7 +47,6 @@ export default function Jokes() {
       const updatedJokes = jokes.filter((_, index) => index !== aleatoryNumber);
       setJokes(updatedJokes);
     } else {
-      console.log("Array vazio");
       setAnimationArray(true);
     }
   };

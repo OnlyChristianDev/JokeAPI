@@ -5,96 +5,115 @@ import BlueCard from "../../../public/BlueCard.png";
 import RedCard from "../../../public/RedCard.png";
 import Aviso from './Aviso';
 import { AnimatePresence } from "framer-motion";
-import ArrayVazio from "../components/ArrayVazio"
+import ArrayVazio from "../components/ArrayVazio";
 import Indenticacao from './Indentificacao';
 
 interface JokeProps {
   joke: string;
-  answer : string;
-  onNextJoke: () => void
-  animationArray : boolean
+  answer: string;
+  onNextJoke: () => void;
+  animationArray: boolean;
 }
 
-export default function Card({ joke, answer, onNextJoke, animationArray  }: JokeProps) {
+export default function Card({ joke, answer, onNextJoke, animationArray }: JokeProps) {
   const [flippedRedCard, setFlippedRedCard] = useState(false);
   const [flippedBlueCard, setFlippedBlueCard] = useState(false);
-  const [animation, setAnimation] = useState(false)
+  const [animation, setAnimation] = useState(false);
+  const [showIndenticacao, setShowIndenticacao] = useState(true);
+
+  useEffect(() => {
+  
+    if (joke) {
+      setShowIndenticacao(false);
+    }
+  }, [joke]);
 
   const flippedBlueCardFunction = () => {
-    if (flippedBlueCard){
-      setFlippedRedCard(!flippedRedCard)
-    } else if (flippedBlueCard == false && flippedRedCard == true){
-      setFlippedRedCard(!flippedRedCard)
+    if (flippedBlueCard) {
+      setFlippedRedCard(!flippedRedCard);
+    } else if (!flippedBlueCard && flippedRedCard) {
+      setFlippedRedCard(!flippedRedCard);
     } else {
-      setAnimation(true)
-    }    
-  }
+      setAnimation(true);
+    }
+  };
 
   const flippedRedCardFunction = () => {
-    if (flippedBlueCard){
-      setFlippedBlueCard(false)
-      setFlippedRedCard(false)
+    if (flippedBlueCard) {
+      setFlippedBlueCard(false);
+      setFlippedRedCard(false);
     } else {
-      setFlippedBlueCard(true)
-      onNextJoke()
+      setFlippedBlueCard(true);
+      onNextJoke();
     }
-  }
+  };
 
-  useEffect(()=> {
+  useEffect(() => {
     if (animation) {
-      setTimeout(() => setAnimation(false), 1600); 
+      setTimeout(() => setAnimation(false), 1600);
     }
-  },[animation])
+  }, [animation]);
 
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <div className='flex gap-10'>
-        <div className='flex items-center justify-center flex-col gap-5'>
-          <Indenticacao nomeDaCarta={"Piadas"} />
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex gap-10">
+        <div className="flex items-center justify-center flex-col gap-5">
+        <AnimatePresence>
+          {showIndenticacao && <Indenticacao nomeDaCarta={"Piadas"} />} 
+          </AnimatePresence>
           <motion.div
-            className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${flippedBlueCard ? 'bg-[#9A6AF9] p-10' : ''}`} 
+            className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${
+              flippedBlueCard ? "bg-[#9A6AF9] p-10" : ""
+            }`}
             initial={{ rotateY: 0 }}
             animate={{
               rotateY: flippedBlueCard ? 180 : 0,
-              x: animation ? [0, 10, -10, 10, -10, 0] : 0, 
+              x: animation ? [0, 10, -10, 10, -10, 0] : 0,
             }}
             transition={{ duration: 0.6 }}
             onClick={flippedRedCardFunction}
           >
-            
-            {flippedBlueCard ?  <p className='font-semibold scale-x-[-1] text-center text-2xl'>
-            {joke}
-                </p> : ""}
             {flippedBlueCard ? (
-                ""
-            ):( 
-              <Image className='' src={BlueCard} alt='Carta azul com a piada' width={300} height={300} />
+              <p className="font-semibold scale-x-[-1] text-center text-2xl">{joke}</p>
+            ) : (
+              <Image
+                className=""
+                src={BlueCard}
+                alt="Carta azul com a piada"
+                width={300}
+                height={300}
+              />
             )}
           </motion.div>
         </div>
-        <div className='flex items-center justify-center flex-col gap-5'>
-          <Indenticacao nomeDaCarta={"Respostas"}/>
+        <div className="flex items-center justify-center flex-col gap-5">
+          {showIndenticacao && <Indenticacao nomeDaCarta={"Respostas"} />}
           <motion.div
-            className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${flippedRedCard ? 'bg-[#F55F56] p-10' : ''}`} 
+            className={`w-[300px] cursor-pointer shadow-2xl h-[412px] rounded-lg flex items-center justify-center transition-colors duration-600 ${
+              flippedRedCard ? "bg-[#F55F56] p-10" : ""
+            }`}
             initial={{ rotateY: 0 }}
             animate={{ rotateY: flippedRedCard ? 180 : 0 }}
             transition={{ duration: 0.6 }}
             onClick={flippedBlueCardFunction}
           >
-            {flippedRedCard ?  <p className='text-2xl scale-x-[-1] text-center font-semibold'>
-            {answer}
-                </p> : ""}
             {flippedRedCard ? (
-                ""
-            ):( 
-              <Image className='' src={RedCard} alt='Carta azul com a piada' width={300} height={300} />
+              <p className="text-2xl scale-x-[-1] text-center font-semibold">{answer}</p>
+            ) : (
+              <Image
+                className=""
+                src={RedCard}
+                alt="Carta azul com a piada"
+                width={300}
+                height={300}
+              />
             )}
           </motion.div>
         </div>
       </div>
       <AnimatePresence>
-        {animationArray == true ? <ArrayVazio /> : ""}
-        {animation == true ? (<Aviso />) : ""}
+        {animationArray && <ArrayVazio />}
+        {animation && <Aviso />}
       </AnimatePresence>
     </div>
   );
