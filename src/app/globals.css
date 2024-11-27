@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
     margin: 0; 
     height: 100vh; 
-    background: linear-gradient(to bottom right, #171717, #201f1f);
+    background-color: #101010;
+    background-image: url('/pattern.svg');
     color: white;
     background-blend-mode: overlay;
     background-size: cover;

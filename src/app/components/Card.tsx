@@ -54,6 +54,11 @@ export default function Card({ joke, answer, onNextJoke, animationArray }: JokeP
     }
   }, [animation]);
 
+  const ArrayNull = () => {
+    flippedRedCardFunction();
+    onNextJoke();
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex gap-10">
@@ -112,7 +117,7 @@ export default function Card({ joke, answer, onNextJoke, animationArray }: JokeP
         </div>
       </div>
       <AnimatePresence>
-        {animationArray && <ArrayVazio />}
+        {animationArray && <ArrayVazio refreshArray={ArrayNull} />}
         {animation && <Aviso />}
       </AnimatePresence>
     </div>

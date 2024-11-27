@@ -8,6 +8,7 @@ export default function Jokes() {
   const [currentJoke, setCurrentJoke] = useState(""); 
   const [currentAnswer, setCurrentAnswer] = useState(""); 
   const [animationArray, setAnimationArray] = useState(false);
+  const [initialJokes, setInitialJokes] = useState<{ joke: string; answer: string }[]>([]); 
 
   useEffect(() => {
     async function fetchJokes() {
@@ -19,6 +20,7 @@ export default function Jokes() {
         }
         const json = await response.json();
         setJokes(json);
+        setInitialJokes(json)
         setLoading(false);
       } catch (error) {
         console.error(error);
