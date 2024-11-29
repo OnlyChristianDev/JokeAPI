@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import ArrayVazio from "./ArrayVazio";
+import { AnimatePresence } from "framer-motion";
 
 export default function Jokes() {
   const [jokes, setJokes] = useState<{ joke: string; answer: string }[]>([]); 
@@ -49,18 +51,24 @@ export default function Jokes() {
       const updatedJokes = jokes.filter((_, index) => index !== aleatoryNumber);
       setJokes(updatedJokes);
     } else {
-      setAnimationArray(true);
+      setAnimationArray(true)
     }
   };
+
+  const arrayNull = () => {
+    setJokes(initialJokes)
+    setAnimationArray(false)
+  }
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center flex-col">
       <Card
+      ArrayNull={arrayNull}
         joke={currentJoke}
         answer={currentAnswer}
         onNextJoke={jokesFunction}
         animationArray={animationArray}
-      />
+      />     
     </div>
   );
 }

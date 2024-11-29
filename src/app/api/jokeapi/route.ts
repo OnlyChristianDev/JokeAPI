@@ -36,10 +36,6 @@ const jokes = [
       answer: "É muito mais fácil do que caminhar!"
   },
   {
-      joke: "Seja como um próton.",
-      answer: "Sempre seja positivo."
-  },
-  {
       joke: "Que tipo de carro o Yoda dirige?",
       answer: "Toyoda."
   },
@@ -61,7 +57,7 @@ const jokes = [
   },
   {
       joke: "O que o Oceano Atlântico disse ao Oceano Índico?",
-      answer: "'Experimente e seja mais Pacífico!'"
+      answer: "'Experimente ser mais Pacífico!'"
   },
   {
       joke: "Um homem entra em uma biblioteca e pede ao bibliotecário livros sobre paranóia.",
