@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import ArrayVazio from "./ArrayVazio";
-import { AnimatePresence } from "framer-motion";
 
 export default function Jokes() {
   const [jokes, setJokes] = useState<{ joke: string; answer: string }[]>([]); 

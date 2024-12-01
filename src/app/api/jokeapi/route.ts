@@ -16,10 +16,6 @@ const jokes = [
       answer: "Eu disse a eles: 'Esperem para ver!'"
   },
   {
-      joke: "Quando em uma candidatura a emprego perguntam quem deve ser notificado em caso de emergência, sempre escrevo:",
-      answer: "'Um médico muito bom.'"
-  },
-  {
       joke: "Por que o médico está sempre calmo?",
       answer: "Porque ele tem muitos pacientes."
   },
