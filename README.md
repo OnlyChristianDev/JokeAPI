@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🎭 Projeto de Cartas Interativas com Piadas
+Este é um projeto em Next.js que apresenta um sistema interativo de cartas que exibem piadas e suas respostas. Ao clicar nas cartas, elas giram, revelando a piada ou a resposta no verso. Além disso, o projeto consome uma API para obter as piadas dinamicamente.
 
-## Getting Started
+## 📋 Funcionalidades
+Animações interativas: Uso de Framer Motion para animações suaves de rotação das cartas.
+Consumo de API: Piadas são carregadas dinamicamente a partir de uma API.
+Cartas dinâmicas: Uma carta azul exibe a piada e outra carta vermelha exibe a resposta.
+Sistema de alerta: Indica ao usuário quando clicar na carta para continuar a interação.
+Gerador de piadas: Exibe uma nova piada a cada interação.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
+React.js: Biblioteca principal para construção da interface.
+Next.js: Framework para renderização no lado do servidor e gerenciamento de rotas.
+Framer Motion: Biblioteca para animações de cartas.
+Tailwind CSS: Framework CSS para estilização rápida e eficiente.
+TypeScript: Adição de tipagem estática para maior robustez do código.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Como Funciona o Projeto
+Carregamento das piadas:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O componente Jokes faz uma chamada à API /api/jokeapi para buscar as piadas.
+Animação das cartas:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O componente Card utiliza Framer Motion para animar a rotação das cartas quando clicadas.
+Lógica das piadas:
 
-## Learn More
+Uma piada e sua resposta são exibidas aleatoriamente ao clicar no botão "Mais uma".
+Sistema de alerta:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Caso a carta azul ainda não tenha sido virada, a carta vermelha treme, indicando que o próximo passo é virar a carta azul.
