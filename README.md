@@ -1,4 +1,4 @@
-🎭 Projeto de Cartas Interativas com Piadas
+## 🎭 Projeto de Cartas Interativas com Piadas
 Este é um projeto em Next.js que apresenta um sistema interativo de cartas que exibem piadas e suas respostas. Ao clicar nas cartas, elas giram, revelando a piada ou a resposta no verso. Além disso, o projeto consome uma API para obter as piadas dinamicamente.
 
 ## 📋 Funcionalidades
