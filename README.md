@@ -18,14 +18,13 @@ TypeScript: Adição de tipagem estática para maior robustez do código.
 
 ## 🔧 Como Funciona o Projeto
 Carregamento das piadas:
-
 O componente Jokes faz uma chamada à API /api/jokeapi para buscar as piadas.
+
 Animação das cartas:
-
 O componente Card utiliza Framer Motion para animar a rotação das cartas quando clicadas.
+
 Lógica das piadas:
-
 Uma piada e sua resposta são exibidas aleatoriamente ao clicar no botão "Mais uma".
-Sistema de alerta:
 
+Sistema de alerta:
 Caso a carta azul ainda não tenha sido virada, a carta vermelha treme, indicando que o próximo passo é virar a carta azul.
